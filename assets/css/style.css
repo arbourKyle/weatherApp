@@ -2,10 +2,25 @@
     margin: 0;
 }
 
-.container-fluid {
+body {
+    margin: 1rem;
+}
+
+header {
+    height: 3rem;
     text-align: center;
     background-color: rgb(71, 71, 250);
-    color: whitesmoke;    
+    color: whitesmoke;
+    padding-top: 1rem;
+}
+
+#submit,
+#userInput,
+#searchBar
+{
+    width: 15rem;
+    text-align: center;
+
 }
 
 .inputs {

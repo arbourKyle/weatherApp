@@ -4,23 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Document</title>
 </head>
 <body>
 <section class="container">
-    <div class="container-fluid">
+    
         <header>
             <h1>Weather Dashboard</h1>
         </header>
-    </div>          
-<div class="row">
-    <div class="card col-2">
+    
+<div id="searchBar">
         card city search
-        <input id="cityInput" type="text" autofocus="true" class="form-input"/>
-        
-        <button id="submit">Search</button>
+        <br>
+        <input id="userInput" type="text" autofocus="true" class="form-input"/>
+        <br>
+        <button id="submit" type="button" class="btn btn-light">Search</button>
         <div id="cityList" class="list-group"></div>
     </div>
 
@@ -31,32 +31,37 @@
 </div>
 
 <div class="row" style=" padding: 2px;">
-    <div class="empty col-2"></div>
+    <div id='popCity' class="empty col-2"></div>
     
-    <div class=" card col-3" style="height: 175px; width: 100px; background-color: aqua; margin: 20px;">
+    <div class="card col-3" style="height: 175px; width: 100px; background-color: aqua; margin: px;">
     
         popCard1
     </div>
     
-    <div class="card col-3"  style="height: 175px; width: 100px; background-color: aqua; margin: 20px;">
+    <div class="card col-3"  style="height: 175px; width: 100px; background-color: aqua; margin: 8px;">
     
         popCard2
     </div>
     
-    <div class="card col-3" style="height: 175px; width: 100px; background-color: aqua; margin: 20px;">
+    <div class="card col-3" style="height: 175px; width: 100px; background-color: aqua; margin: 8px;">
     
         popCard3
     </div>
 
-    <div class="card col-3" style="height: 175px; width: 100px; background-color: aqua; margin: 20px;">
+    <div class="card col-3" style="height: 175px; width: 100px; background-color: aqua; margin: 8px;">
     
         popCard4
+    </div>
+
+    <div class="card col-3" style="height: 175px; width: 100px; background-color: aqua; margin: 8px;">
+    
+        popCard5
     </div>
     </div>
 </div>
       
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="assets/js/script.js"></script>
 </html>
