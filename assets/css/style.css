@@ -1,0 +1,14 @@
+.container-fluid {
+    text-align: center;
+    background-color: rgb(71, 71, 250);
+    color: whitesmoke;    
+}
+
+.inputs {
+    float: right;
+    text-align: left;
+    height: 300px;
+    width: 625px;
+    border: 1px solid black;
+    padding-left: 20px;
+}
