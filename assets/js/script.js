@@ -9,21 +9,3 @@ var city;
 
 // fetch(queryURL)
 
-var searchCity = function (event) {
-    event.preventDefault();
-  
-    var user = cityInput.value.trim();
-  
-    if (!user) {
-        
-        localStorage.setItem('cityName', user.value)
-       
-    } else {
-      alert('Please enter a city');
-    }
-  };
-
-  document.addEventListener("submit", searchCity);
-
-
-

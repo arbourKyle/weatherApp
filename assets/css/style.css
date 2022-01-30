@@ -1,3 +1,7 @@
+* {
+    margin: 0;
+}
+
 .container-fluid {
     text-align: center;
     background-color: rgb(71, 71, 250);
