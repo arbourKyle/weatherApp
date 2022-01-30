@@ -9,12 +9,15 @@
     <title>Document</title>
 </head>
 <body>
+
+<!-- Contains everything on page -->
 <section class="container">
     
         <header>
             <h1>Weather Dashboard</h1>
         </header>
-    
+
+<!-- Float left searchbar -->
 <div id="searchBar">
         card city search
         <br>
@@ -22,38 +25,40 @@
         <br>
         <button id="submit" type="button" class="btn btn-light">Search</button>
         <div id="cityList" class="list-group"></div>
-    </div>
-
-
-    <div class="card col-10">
-        card city input
-    </div>
+    
+<!-- History of cities visited linked here -->
+    <div id='popCity'>Test</div>
 </div>
 
-<div class="row" style=" padding: 2px;">
-    <div id='popCity' class="empty col-2"></div>
+<!-- Float right weather card -->
+    <div id="populateWeather">
+        card city input
+    </div>
+
+<!-- 5 day forecast cards -->
+<div id="fiveDayCards">
     
-    <div class="card col-3" style="height: 175px; width: 100px; background-color: aqua; margin: px;">
+    <div class="card">
     
         popCard1
     </div>
     
-    <div class="card col-3"  style="height: 175px; width: 100px; background-color: aqua; margin: 8px;">
+    <div class="card">
     
         popCard2
     </div>
     
-    <div class="card col-3" style="height: 175px; width: 100px; background-color: aqua; margin: 8px;">
+    <div class="card">
     
         popCard3
     </div>
 
-    <div class="card col-3" style="height: 175px; width: 100px; background-color: aqua; margin: 8px;">
+    <div class="card">
     
         popCard4
     </div>
 
-    <div class="card col-3" style="height: 175px; width: 100px; background-color: aqua; margin: 8px;">
+    <div class="card">
     
         popCard5
     </div>

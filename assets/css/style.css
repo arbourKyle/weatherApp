@@ -3,6 +3,7 @@
 }
 
 body {
+    position: relative;
     margin: 1rem;
 }
 
@@ -16,18 +17,91 @@ header {
 
 #submit,
 #userInput,
-#searchBar
+#searchBar,
+#popCity
 {
+    float: left;
     width: 15rem;
     text-align: center;
-
+    
 }
 
-.inputs {
+#submit,
+#popCity
+{
+    width: 15.5rem;
+    margin-top: 1rem;
+    background-color: rgb(91, 158, 235);
+    color: whitesmoke;
+}
+
+#populateWeather {
     float: right;
     text-align: left;
     height: 300px;
-    width: 625px;
+    width: 600px;
     border: 1px solid black;
-    padding-left: 20px;
+    margin-top: 1rem;
+    
 }
+
+#fiveDayCards {
+    position: absolute;
+    top: 25rem;
+    right: 0rem;
+    display: flex;
+    align-items: center;
+    margin: 0 20px 0 20px;
+    
+}
+
+.card {
+    height: 175px;
+    width: 100px;
+    background-color: aqua;
+    margin: 0.5rem;
+}
+
+/* @media screen and (min-width: 992px) */
+
+@media screen and (max-width: 875px) {
+
+    
+
+    #submit,
+    #userInput,
+    #searchBar,
+    #popCity
+    {
+        position: relative;
+        left: 3rem;
+        width: 15rem;
+        text-align: center;
+    }
+
+    #fiveDayCards {
+        top: 35rem;
+        left: 1rem;
+        
+    }
+}
+
+/* @media screen and (max-width: 600px) {
+    
+        
+    #submit,
+    #userInput,
+    #searchBar,
+    #popCity
+    {
+        position: relative;
+        left: 3rem;
+        width: 15rem;
+        text-align: center;
+    }
+
+    #fiveDayCards {
+        left: 1rem;
+        
+    }
+} */
