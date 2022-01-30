@@ -1,11 +1,20 @@
+  const key = '980b8738932c5c557956e464ec4e4651';
 
-var cityInput = $("#cityInput");
-var cityList = $("#cityList");
+  var cityInput = document.getElementById("userInput");
+  var city = document.getElementById('location');
+  var temp = document.getElementById('temp');
+  var desc = document.getElementById('desc');
+  var button = document.getElementById('submitButton');
 
-// var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey;
+  button.addEventListener('click', function() {
 
-var apiKey = "b8149456ebf22679f89374a350ed5a0d";
-var city;
-
-// fetch(queryURL)
-
+    fetch('https://api.openweathermap.org/data/2.5/weather?q='+cityInput.value+'&appid='+key.value)
+    .then(function(response) { return response.json() }) // Convert data to json
+    .then(function(data) {
+      console.log(data)
+    })
+    .catch(function() {
+      // catch any errors
+    })
+  })
+  
