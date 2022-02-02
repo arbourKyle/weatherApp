@@ -6,54 +6,57 @@
   // dsd
   var desc = document.getElementById('desc');
   var button = document.getElementById('submitButton');
-  let lat;
-  let lon;
-
-  button.addEventListener('click', function(event) {
+  
+  
+  button.addEventListener('click', function geoC(event) {
     event.preventDefault();
-
-   
+    
     fetch('http://api.openweathermap.org/geo/1.0/direct?q='+cityInput.value+'&appid='+key)
     .then(function(response) { return response.json() }) 
     .then(function(data) {
       console.log(data)
-
+      sessionStorage.setItem('lat', data[0].lat)
+      sessionStorage.setItem('lon', data[0].lon)
+      weather();
     })
     .catch(function() {
     })
+    store();
+  }); //end of click func
+  
+  function weather() {
+  let lat = sessionStorage.getItem('lat');
+  let lon = sessionStorage.getItem('lon');
+  console.log(lat, lon);
 
-    console.log(response.body);
+  fetch('https://api.openweathermap.org/data/2.5/onecall?lat='+lat+'&lon='+lon+'&current.uvi'+'&appid='+key)
+  .then(function(response) { return response.json() }) 
+  .then(function(data) {
+    console.log(data.current)
+    console.log(data.current.humidity)
+  })
+  .catch(function() {
+  })
+} //end of weather func
   
+  function store() {
+    
+    var cityArr = JSON.parse(localStorage.getItem("city")) || [];
+    let temp = cityInput.value;
   
-  
-  
-    // store();
+    cityArr.push(temp);
+    console.log(cityArr);
     
     
-
-  //   fetch('https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid='+key)
-  //   .then(function(response) { return response.json() }) 
-  //   .then(function(data) {
-  //     console.log(data)
-  //   })
-  //   .catch(function() {
-  //   })
-  //   store();
-  // })
-
-});
-
-
-  
-  
-  
-  // function store() {
+    let newArr = [];
     
-  //   var cityArr = JSON.parse(localStorage.getItem("city")) || [];
-  //   let temp = cityInput.value;
-  
-  //   cityArr.push(temp);
-  //   console.log(cityArr);
-
-  // localStorage.setItem('city', JSON.stringify(cityArr));
-  // }
+    if(cityArr === 1) {
+      cityArr.pop();
+      cityArr[0] = newArr;
+    }
+    else {
+      
+      localStorage.setItem('city', JSON.stringify(cityArr));
+  }
+ 
+  }
