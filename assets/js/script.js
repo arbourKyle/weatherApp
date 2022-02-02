@@ -6,28 +6,54 @@
   // dsd
   var desc = document.getElementById('desc');
   var button = document.getElementById('submitButton');
+  let lat;
+  let lon;
 
   button.addEventListener('click', function(event) {
     event.preventDefault();
 
-    fetch('https://api.openweathermap.org/data/2.5/weather?q='+cityInput.value+'&appid='+key)
+   
+    fetch('http://api.openweathermap.org/geo/1.0/direct?q='+cityInput.value+'&appid='+key)
     .then(function(response) { return response.json() }) 
     .then(function(data) {
       console.log(data)
+
     })
     .catch(function() {
     })
-    store();
-  })
-  
-  
-  var cityArr = JSON.parse(localStorage.getItem("city")) || [];
-  function store() {
-    
-    let temp = cityInput.value;
-  for(var i = 0;i<1;i++)
-  cityArr.push(temp);
-  console.log(cityArr);
 
-  localStorage.setItem('city', cityArr);
-  }
+    console.log(response.body);
+  
+  
+  
+  
+    // store();
+    
+    
+
+  //   fetch('https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid='+key)
+  //   .then(function(response) { return response.json() }) 
+  //   .then(function(data) {
+  //     console.log(data)
+  //   })
+  //   .catch(function() {
+  //   })
+  //   store();
+  // })
+
+});
+
+
+  
+  
+  
+  // function store() {
+    
+  //   var cityArr = JSON.parse(localStorage.getItem("city")) || [];
+  //   let temp = cityInput.value;
+  
+  //   cityArr.push(temp);
+  //   console.log(cityArr);
+
+  // localStorage.setItem('city', JSON.stringify(cityArr));
+  // }
