@@ -23,8 +23,9 @@
   function store() {
   cityArr = [];
   let temp = cityInput.value;
+  for(var i = 0;i<1;i++)
   cityArr.push(temp);
   console.log(cityArr);
 
-  localStorage.setItem('city', cityArr[0]);
+  localStorage.setItem('city', cityArr);
   }

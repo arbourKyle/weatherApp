@@ -36,11 +36,13 @@ header {
 
 #populateWeather {
     grid-column: 2 / 7;
-    width: 35rem;
+    width: 90%;
     height: 20rem;
     margin: 1rem 0 0 1rem;
     border: 1px solid black;
 }
+
+
 
 #c1 {
     grid-row: 2;
@@ -53,24 +55,36 @@ header {
     grid-column: 3 / 4;
 }
 
-#c4 {
+#c3 {
     grid-row: 2;
     grid-column: 4 / 5;
 }
 
-#c5 {
+#c4 {
     grid-row: 2;
     grid-column: 5 / 6;
 }
 
+#c5 {
+    grid-row: 2;
+    grid-column: 6 / 7;
+}
+
 .card {
     
-    height: 150px;
-    width: 100px;
+    height: 90%;
+    width: 90%;
     background-color: rgb(13, 136, 236);
+    padding: 0;
+    margin: 0;
 }
 /* @media screen and (min-width: 992px) */
 @media screen and (max-width: 600px) {
-
+    
+    .container {
+        display: grid;
+        grid-template-columns: 1fr;
+        
+    }
     
 }
