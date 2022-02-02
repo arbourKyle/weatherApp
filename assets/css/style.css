@@ -16,80 +16,41 @@ header {
     padding-top: 1rem;
 }
 
-#submitButton,
-#userInput,
-#searchBar,
-#popCity
-{
-    float: left;
-    width: 15rem;
-    text-align: center;
-    
+.container {
+    display: grid;
+    grid-template-columns: 10rem 1fr;
+    grid-template-rows: 10rem 1fr
 }
 
-#submitButton,
-#popCity
+#user-form,
+#userInput,
+#searchBar
 {
-    width: 15.5rem;
-    margin-top: 1rem;
-    background-color: rgb(91, 158, 235);
-    color: whitesmoke;
+    width: 8rem;
+    text-align: center;
+}
+
+#submitButton {
+    width: 8.5rem;
 }
 
 #populateWeather {
-    text-align: left;
+    grid-column: 2;
+    width: 33rem;
+    margin: 1rem 0 0 1rem;
     border: 1px solid black;
-    height: 10rem;
-    width: 30rem;
-    margin-left: 3rem;
-}
-
-.tabs {
-    display: inline-table;
-    float: right;
-    margin: 1rem;
-    width: 50%;
+    border-right: none;
 }
 
 #fiveDayCards {
-    
+    margin: 1rem 0 0 0;
     display: flex;
-    justify-content: space-evenly;
-    margin: 1rem 1rem 1rem 1rem;
-    
+    justify-content: space-around;
+
 }
 
 .card {
-    height: 175px;
+    height: 150px;
     width: 100px;
-    background-color: aqua;
-    margin: 0.5rem;
-}
-}
-
-@media screen and (max-width: 40em)
-{
-    body {
-        float: none;
-    }
-    
-    .container {
-        display: grid;
-        grid-template-columns: 1fr;
-        column-gap: 20px;
-    }
-    
-    #populateWeather {
-     
-    }
-
-    #searchBar {
-        float: none;
-        justify-items: center;
-        
-    }
-
-    #fiveDayCards {
-        
-    }
+    background-color: rgb(13, 136, 236);
 }

@@ -10,36 +10,45 @@
 </head>
 <body>
 
-<!-- Contains everything on page -->
-<section class="container">
+
 
 <!-- Heading -->
-        <header>
-            <h1>Weather Dashboard</h1>
-        </header>
+<header>
+    <h1>Weather Dashboard</h1>
+</header>
+
+<!-- Section contains top row -->
+<section class="container">
 
 <!-- Float left searchbar -->
 <div id="searchBar">
         Enter a City
         <br>
+        <form id="user-form" class="card-body">
         <input id="userInput" type="text" autofocus="true" class="form-input"/>
         <br>
         <button id="submitButton" type="button" class="btn btn-light">Search</button>
-        <div id="cityList" class="list-group"></div>
-    
+        </form>
+
 <!-- History of cities visited linked here -->
-    <div id='popCity'>Test</div>
+        <div id="cityContainer" class="list-group">
+          
+        </div>
+   
 </div>
-<section class="tabs">
 <!-- Float right weather card -->
-    <div id="populateWeather">
-        <h2 id="location">Test</h2>
-        <br>
-        <p id="temp">Test</p>
-        <br>
-        <p id="desc">Test</p>
-    </div>
+<div id="populateWeather">
+    <h2 id="location">Test</h2>
     <br>
+    <p id="temp">Test</p>
+    <br>
+    <p id="desc">Test</p>
+</div>
+<br>
+
+
+
+<section class="tabs">
 <!-- 5 day forecast cards -->
 <div id="fiveDayCards">
     
@@ -69,10 +78,10 @@
     </div>
     </div>
 </div>
-</section>
+</section> 
 </section>  
 </body>
 <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> -->
-<!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="assets/js/script.js"></script>
 </html>
