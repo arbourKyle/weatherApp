@@ -20,9 +20,11 @@
     store();
   })
   
+  
+  var cityArr = JSON.parse(localStorage.getItem("city")) || [];
   function store() {
-  cityArr = [];
-  let temp = cityInput.value;
+    
+    let temp = cityInput.value;
   for(var i = 0;i<1;i++)
   cityArr.push(temp);
   console.log(cityArr);
