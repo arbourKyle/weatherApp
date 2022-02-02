@@ -18,8 +18,8 @@ header {
 
 .container {
     display: grid;
-    grid-template-columns: 10rem 1fr;
-    grid-template-rows: 10rem 1fr
+    grid-template-columns: 10rem repeat(5, 1fr);
+    grid-template-rows: 25rem 12rem
 }
 
 #user-form,
@@ -35,22 +35,42 @@ header {
 }
 
 #populateWeather {
-    grid-column: 2;
-    width: 33rem;
+    grid-column: 2 / 7;
+    width: 35rem;
+    height: 20rem;
     margin: 1rem 0 0 1rem;
     border: 1px solid black;
-    border-right: none;
 }
 
-#fiveDayCards {
-    margin: 1rem 0 0 0;
-    display: flex;
-    justify-content: space-around;
+#c1 {
+    grid-row: 2;
+    grid-column: 2 / 3;
 
+}
+
+#c2 {
+    grid-row: 2;
+    grid-column: 3 / 4;
+}
+
+#c4 {
+    grid-row: 2;
+    grid-column: 4 / 5;
+}
+
+#c5 {
+    grid-row: 2;
+    grid-column: 5 / 6;
 }
 
 .card {
+    
     height: 150px;
     width: 100px;
     background-color: rgb(13, 136, 236);
+}
+/* @media screen and (min-width: 992px) */
+@media screen and (max-width: 600px) {
+
+    
 }

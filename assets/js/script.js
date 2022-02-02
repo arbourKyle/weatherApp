@@ -3,7 +3,7 @@
   var cityInput = document.getElementById("userInput");
   var cityHistoryList = document.getElementById("cityList");
   var city = document.getElementById('location');
-  var temp = document.getElementById('temp');
+  // dsd
   var desc = document.getElementById('desc');
   var button = document.getElementById('submitButton');
 
@@ -17,18 +17,14 @@
     })
     .catch(function() {
     })
+    store();
   })
   
-  
-  cityArr = [];
-  temp = cityInput.value;
-  console.log(temp);
-  
   function store() {
-    for(var i = 0;i<temp.length; i++);
-    cityArr.push[i];
-    console.log(store(i))
-    
+  cityArr = [];
+  let temp = cityInput.value;
+  cityArr.push(temp);
+  console.log(cityArr);
+
+  localStorage.setItem('city', cityArr[0]);
   }
-  
-  store();
