@@ -26,9 +26,9 @@
         Enter a City
         <br>
         <form id="user-form" class="card-body">
-        <input id="userInput" type="text" autofocus="true" class="form-input"/>
+        <input id="userInput" type="text"autofocus="true" class="form-input"/>
         <br>
-        <button id="submitButton" type="button" class="btn btn-light">Search</button>
+        <button id="submitButton" type="submit" class="btn btn-light">Search</button>
         </form>
 
 <!-- History of cities visited linked here -->
@@ -36,17 +36,21 @@
 
 
 
-            
+
         </div>
 </div>
 
 <!-- Float right weather card -->
 <div id="populateWeather">
-    <h2 id="location">Test</h2>
+    <h2 id="location"> <span id="today"></span></h2>
     <br>
-    <p id="temp">Test</p>
+    <p>Temperature: <span id="temp"></span> </p>
     <br>
-    <p id="desc">Test</p>
+    <p>Wind: <span id="wind"></span></p>
+    <br>
+    <p>Humidity: <span id="humid"></span></p>
+    <br>
+    <p>UV Index: <span id="uv"></span></p>
 </div>
 <br>
 
