@@ -33,18 +33,21 @@
     .catch(function() {
     })
     store();
-  }); //end of click func
+  }); //end of click init geo func
   
   function weather() {
   let lat = sessionStorage.getItem('lat');
   let lon = sessionStorage.getItem('lon');
   console.log(lat, lon);
 
-  fetch('https://api.openweathermap.org/data/2.5/onecall?lat='+lat+'&lon='+lon+'&appid='+key)
+  fetch('https://api.openweathermap.org/data/2.5/onecall?lat='+lat+'&lon='+lon+'&units=metric&appid='+key)
   .then(function(response) { return response.json() }) 
   .then(function(data) {
     console.log(data.current)
-    sessionStorage.setItem('weather', JSON.stringify(data))
+    sessionStorage.setItem('temp', data.current.temp)
+    sessionStorage.setItem('wind', data.current.wind_speed)
+    sessionStorage.setItem('humid', data.current.humidity)
+    sessionStorage.setItem('uv', data.current.uvi)
   })
   .catch(function() {
   })
@@ -92,10 +95,10 @@ populateWeather();
 
   function populateWeather() {
     
-    let temp = sessionStorage.getItem('weather', );
-    // let wind = sessionStorage.getItem('weather', JSON.parse(data.current.wind_speed));
-    // let humid = sessionStorage.getItem('weather', JSON.parse(data.current.humidity));
-    // let uv = sessionStorage.getItem('weather', JSON.parse(data.current.uvi));
+    let temp =  sessionStorage.getItem('temp');
+    let wind =  sessionStorage.getItem('wind');
+    let humid = sessionStorage.getItem('humid');
+    let uv =    sessionStorage.getItem('uv');
 
     cityEl.textContent = cityInput.value;
     console.log(cityEl);
