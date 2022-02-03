@@ -1,7 +1,7 @@
   const key = 'a36715b7289d49ee08223b849dbb2c64';
   
   var cityInput = document.getElementById("userInput");
-  var cityHistoryList = document.getElementById("cityList");
+  var cityHistoryList = document.getElementById("cityContainer");
   var city = document.getElementById('location');
   // dsd
   var desc = document.getElementById('desc');
@@ -46,17 +46,17 @@
   
     cityArr.push(temp);
     console.log(cityArr);
+    localStorage.setItem('city', JSON.stringify(cityArr));
     
-    
-    let newArr = [];
-    
-    if(cityArr === 1) {
-      cityArr.pop();
-      cityArr[0] = newArr;
-    }
-    else {
-      
-      localStorage.setItem('city', JSON.stringify(cityArr));
-  }
- 
-  }
+    cityName = cityArr[0];
+
+    let displayC = document.createElement('div');
+    displayC.style = 'border: 1px solid black; margin: 0.5rem 0 0.5rem 0;';
+    let textC = document.createTextNode(cityName);
+
+    displayC.appendChild(textC);
+    cityHistoryList.appendChild(displayC);
+  
+  } //end of store func
+
+
