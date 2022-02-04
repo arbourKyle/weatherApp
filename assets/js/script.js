@@ -10,6 +10,7 @@
   let uvEl = document.getElementById('uv');
   let humidEl = document.getElementById('humid');
   let windEl = document.getElementById('wind');
+  let iconEl = document.getElementById('today');
 
 
 
@@ -40,7 +41,7 @@
   let lon = sessionStorage.getItem('lon');
   console.log(lat, lon);
 
-  fetch('https://api.openweathermap.org/data/2.5/onecall?lat='+lat+'&lon='+lon+'&units=metric&appid='+key)
+  fetch('https://api.openweathermap.org/data/2.5/onecall?lat='+lat+'&lon='+lon+'&current.weather.icon&units=metric&appid='+key)
   .then(function(response) { return response.json() }) 
   .then(function(data) {
     console.log(data.current)
@@ -48,6 +49,8 @@
     sessionStorage.setItem('wind', data.current.wind_speed)
     sessionStorage.setItem('humid', data.current.humidity)
     sessionStorage.setItem('uv', data.current.uvi)
+    sessionStorage.setItem('icon', data.current.weather[0].icon)
+    sessionStorage.setItem('icon2', data.current.weather[1].icon)
   })
   .catch(function() {
   })
@@ -99,12 +102,27 @@ populateWeather();
     let wind =  sessionStorage.getItem('wind');
     let humid = sessionStorage.getItem('humid');
     let uv =    sessionStorage.getItem('uv');
+    let icon =  sessionStorage.getItem('icon');
 
-    cityEl.textContent = cityInput.value;
+    //format user input to capitalize the first letter
+
+    let formatName = cityInput.value.toLowerCase().split(' ');
+
+    for (let i = 0; i < formatName.length; i++) {
+      formatName[i] = formatName[i][0].toUpperCase() + formatName[i].substr(1);
+    }
+    let newName = formatName.join(' ');
+    console.log(newName);
+
+    //display content to today card
+    cityEl.textContent = newName;
     console.log(cityEl);
+    
+    iconEl.innerHtml = icon;
 
-    tempEl.textContent = temp.value;
-    windEl.textContent = wind.value;
-    humidEl.textContent = humid.value;
-    uvEl.textContent = uv.value;
-  }
+    tempEl.textContent = temp;
+    windEl.textContent = wind;
+    humidEl.textContent = humid;
+    uvEl.textContent = uv;
+
+} //end of populateweather func
