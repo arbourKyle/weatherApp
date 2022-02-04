@@ -10,7 +10,8 @@
   let uvEl = document.getElementById('uv');
   let humidEl = document.getElementById('humid');
   let windEl = document.getElementById('wind');
-  let iconEl = document.getElementById('today');
+  let dateEl = document.getElementById('today');
+  let iconEl = document.getElementById('icon');
 
 
 
@@ -55,7 +56,9 @@
   .catch(function() {
   })
 } //end of weather func
-  
+
+
+// localStorage the name of city and calls the function to display the city
   function store() {
     
     var cityArr = JSON.parse(localStorage.getItem("city")) || [];
@@ -68,7 +71,9 @@
     popCities();
     
   } //end of store func
+
   
+//displays the cities in a history list that can be clicked on
   function popCities() {
     var cityArr = JSON.parse(localStorage.getItem("city"))
   
@@ -77,6 +82,7 @@
     newArr = cityArr[cityArr.length -1];
     
     let displayC = document.createElement('div');
+    displayC.className = cityArr[cityArr.length -1];
     displayC.style = 'border: 1px solid black; margin: 0.5rem 0 0.5rem 0;';
     let textC = document.createTextNode(newArr);
 
@@ -84,11 +90,8 @@
     cityHistoryList.appendChild(displayC);
 
   //convert appended boxes to clickable items
-    cityHistoryList.addEventListener('click', function () {
-
-    
-
-
+    displayC.addEventListener('click', function () {
+      populateWeather();
 
 }) //End of list click func
 
@@ -118,7 +121,7 @@ populateWeather();
     cityEl.textContent = newName;
     console.log(cityEl);
     
-    iconEl.innerHtml = icon;
+    
 
     tempEl.textContent = temp;
     windEl.textContent = wind;

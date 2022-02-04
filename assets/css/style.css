@@ -43,7 +43,7 @@ header {
     grid-column: 2 / 7;
     width: 90%;
     height: 20rem;
-    margin: 1rem 0 0 1rem;
+    margin: 1rem 0 0 0;
     border: 1px solid black;
 }
 
