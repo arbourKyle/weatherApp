@@ -13,140 +13,89 @@
   let dateEl = document.getElementById('today');
   let iconEl = document.getElementById('icon');
   
-  //submit button click
-  
-  document.getElementById('submitButton').addEventListener('click',  function (event) {
-    event.preventDefault();
-    
-     getCityInfo(cityInput.value)
-     popCities();
-     storeCityName();
-     populateWeather();
-  }); //end of click init func
+  var lat;
+  var lon;
+  var temp;
+  var wind;
+  var humid;
+  var uvi;
+  var icon;
+  var icon2;
+  var data;
+  var newName;
 
-//fetch the lat and long of users city
-function getCityInfo(city){
-    fetch('http://api.openweathermap.org/geo/1.0/direct?q='+city+'&appid='+key)
+  
+  document.getElementById('submitButton').addEventListener('click', function weatherToday(event) {
+    event.preventDefault()
+    storeCityname(); //store the name given on click
+    
+    
+    fetch('http://api.openweathermap.org/geo/1.0/direct?q='+cityInput.value+'&appid='+key)
     .then(function(response) { return response.json() }) 
     .then(function(data) {
       console.log(data)
       
-      sessionStorage.setItem('lat', data[0].lat)
-      sessionStorage.setItem('lon', data[0].lon)
-      
-      weather();
+      lat = ('lat', data[0].lat)
+      lon = ('lon', data[0].lon)
+      weather()     //call the weather fetch on response   
     })
     .catch(function() {
     })
-  } //End of lat and long func
+  }); // end of click and fetch coordinates
   
-//fetch the weather of a given location
-function weather() {
-  let lat = sessionStorage.getItem('lat');
-  let lon = sessionStorage.getItem('lon');
-  console.log(lat, lon);
-
-  fetch('https://api.openweathermap.org/data/2.5/onecall?lat='+lat+'&lon='+lon+'&current.weather.icon&units=metric&appid='+key)
-  .then(function(response) { return response.json() }) 
-  .then(function(data) {
-    console.log(data.current)
-    sessionStorage.setItem('temp', data.current.temp)
-    sessionStorage.setItem('wind', data.current.wind_speed)
-    sessionStorage.setItem('humid', data.current.humidity)
-    sessionStorage.setItem('uv', data.current.uvi)
-    sessionStorage.setItem('icon', data.current.weather[0].icon)
-    sessionStorage.setItem('icon2', data.current.weather[1].icon)
-  })
-  .catch(function() {
-  })
-} //end of weather func
-
-
-// localStorage the name of city and calls the function to display the city
-  function storeCityName() {
+  // weather fetch
+  function weather() {  
     
+    fetch('https://api.openweathermap.org/data/2.5/onecall?lat='+lat+'&lon='+lon+'&current.weather.icon&units=metric&appid='+key)
+    .then(function(response) { return response.json() }) 
+    .then(function(data) {
+      console.log(data)
+      temp = data.current.temp;
+      wind = data.current.wind_speed;
+      humid = data.current.humidity;
+      uvi = data.current.uvi;
+      icon = data.current.weather[0].icon;
+      icon2 = data.current.weather[1].icon;
+    })
+    .catch(function() {
+    })
+    todayCard();    //calling the display weather function after data is retrieved
+  } //end of weather fetch
+  
+  
+// capitalize the first letter of a given name
+  function formatCityNames () {
+    formatName = cityInput.value.toLowerCase().split(' ');
+    
+    for (var i = 0; i < formatName.length; i++) {
+      formatName[i] = formatName[i][0].toUpperCase() + formatName[i].substr(1);
+    }
+    newName = formatName.join(' ');
+  } //end of formatting name func
+  
+  
+  function storeCityname() {
+    formatCityNames();
     var cityArr = JSON.parse(localStorage.getItem("city")) || [];
-    let temp = cityInput.value;
-  
-    cityArr.push(temp);
-    console.log(cityArr);
-
+    let tempArr = newName;
+    cityArr.push(tempArr);
+    
   //the city name is set here
-    localStorage.setItem('city', JSON.stringify(cityArr));
-    
-    
-    
-  } //end of store func
-
-  
-//displays the cities in a history list that can be clicked on
-  function popCities() {
-    /* var cityArr2 = JSON.parse(localStorage.getItem("city"))
-  
-  //create and append city names to boxes
-
-    city = cityArr2[cityArr2.length -1];
-    
-    let displayC = document.createElement('div');
-    displayC.className = "cityButton";
-    displayC.style = 'border: 1px solid black; margin: 0.5rem 0 0.5rem 0; cursor: pointer;';
-    displayC.textContent = city;
-    
-    cityHistoryList.append(displayC);
-
-  //convert appended boxes to clickable items
-
-  let savedBtns = document.getElementsByClassName('cityButton');
-
-  for(let i =0; i < savedBtns.length; i++) {
-    savedBtns[i].addEventListener('click', function (event) {
-      let btnText = this.textContent;
-      console.log(this);
-      
-      getCityInfo(btnText)
-      weather();
-      populateWeather();
-          
-    }) //End of list click func
-  } //end of first for loop
- */
-  // populateWeather();
-} //end of popCities func
-
-//function to format user input city to uppercase the first letter of each word
+  localStorage.setItem('city', JSON.stringify(cityArr));
+} //end of storing city name func
 
 
-function populateWeather() {
-  
-  let temp =  sessionStorage.getItem('temp');
-  let wind =  sessionStorage.getItem('wind');
-  let humid = sessionStorage.getItem('humid');
-  let uv =    sessionStorage.getItem('uv');
-  let icon =  sessionStorage.getItem('icon');
-  let iconEl = document.createElement('img');
-  
+//display the name of city in a today card, a history list, and a five day card
+
+function todayCard () {
   let iconUrl =  `http://openweathermap.org/img/wn/${icon}.png`;
   console.log(icon)
   
-  
-  //display content to today card
-  formatName = cityInput.value.toLowerCase().split(' ');
-  for (let i = 0; i < formatName.length; i++) {
-    formatName[i] = formatName[i][0].toUpperCase() + formatName[i].substr(1);
-  }
-  let newName = formatName.join(' ');
-  
-  cityEl.innerText = newName;
-  console.log(cityEl);
-  
-  
-  
+  cityEl.textContent = newName;
   tempEl.textContent = temp;
   windEl.textContent = wind;
   humidEl.textContent = humid;
   uvEl.textContent = uv;
   iconEl.setAttribute('src', iconUrl);
   document.getElementById('location').append(iconEl)
-  
-
-} //end of populateweather func
+}
