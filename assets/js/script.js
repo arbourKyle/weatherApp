@@ -12,6 +12,8 @@ let uvEl = document.getElementById('uv');
 let humidEl = document.getElementById('humid');
 let windEl = document.getElementById('wind');
 let dateEl = document.getElementById('today');
+let iconEl = document.getElementById('iconEl');
+
 
 //id the 5 day forecast cards
 let c1 = document.getElementById('c1');
@@ -31,6 +33,11 @@ var icon;
 var icon2;
 var data;
 var formatName;
+
+
+var today  = new Date();
+dateObj = today.toLocaleDateString("en-US");
+// console.log(dateEl)
 
 
 //click the submit button and fetch the lat and long
@@ -60,8 +67,8 @@ function weather(data) {
   .then(function(response) { return response.json() }) 
   .then(function(data) {
     console.log(data)
-    todayCard(data, name)  //calling the display weather function after data is retrieved
-    forecast(data, name)              //calling forecast function
+    todayCard(data, formatName)  //calling the display weather function after data is retrieved
+    forecast(data, formatName)              //calling forecast function
   })
   .catch(function() {
   })
@@ -74,9 +81,9 @@ function formatCityNames () {
   for (var i = 0; i < name.length; i++) {
     name[i] = name[i][0].toUpperCase() + name[i].substr(1);
   }
-  name = name.join(' ');
-  console.log(name)
-  storeCityName(name)
+  formatName = name.join(' ');
+  console.log(formatName)
+  storeCityName(formatName)
 } //end of formatting name func
 
 
@@ -96,20 +103,21 @@ function storeCityName(name) {
 
 //display the name of city in a today card, a history list, and a five day card
 
-function todayCard (data, name) {
-  let icon = (data.current.weather[0].icon);
-  let iconEl = document.createElement('img');
-  let iconUrl =  `http://openweathermap.org/img/wn/${icon}.png`;
+function todayCard (data, formatName) {
+  
   // console.log(iconUrl)
-  console.log(name)
-  cityEl.innerText = name;
+  // console.log(formatName)
+  cityEl.innerText = formatName;
   tempEl.textContent = data.current.temp;
   windEl.textContent = data.current.wind_speed;
   humidEl.textContent = data.current.humidity;
   uvEl.textContent = data.current.uvi;
+  
+  let icon = (data.current.weather[0].icon);
+  let iconUrl =  `http://openweathermap.org/img/wn/${icon}.png`;
   iconEl.setAttribute('src', iconUrl);
-  document.querySelector('.location').append(iconEl);
-  dateEl.textContent = new Date();
+  // document.querySelector('#today').append(iconEl);
+  dateEl.textContent = dateObj;
 }
 
 //the history list below the search bar
@@ -125,14 +133,15 @@ function todayCard (data, name) {
 
 //the 5 day forecast
 
-function forecast(data, name) {
+function forecast(data, formatName) {
   console.log(data.daily)
+  // console.log(formatName)
 
-  c1.textContent = data.daily[1];
+  /* c1.textContent = data.daily[1];
   c2.textContent = data.daily[2];
   c3.textContent = data.daily[3];
   c4.textContent = data.daily[4];
-  c5.textContent = data.daily[5];
+  c5.textContent = data.daily[5]; */
 
 
 } 

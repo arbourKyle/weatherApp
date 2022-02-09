@@ -90,6 +90,25 @@ header {
     line-height: 3rem;
 }
 
+#titleCard {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    
+}
+
+#titleCard > * {
+    padding: 0.5rem;
+}
+
+#uv {
+    background-color: green;
+    color: white;
+    text-align: center;
+    border-radius: 1%;
+    width: 2.5rem;
+}
+
 /* @media screen and (min-width: 992px) */
 /* @media screen and (max-width: 600px) {
     
