@@ -11,7 +11,7 @@ let uvEl = document.getElementById('uv');
 let humidEl = document.getElementById('humid');
 let windEl = document.getElementById('wind');
 let dateEl = document.getElementById('today');
-let iconEl = document.getElementById('icon');
+// let iconEl = document.getElementById('icon');
 
 var lat;
 var lon;
@@ -22,18 +22,24 @@ var uvi;
 var icon;
 var icon2;
 var data;
+var newName;
+
+"2022-02-09T00:00:51.722Z"
+"2022-02-09T00:00:51.722Z"
 
 
-//click submit and fetch lat and long
+
+
+
 document.getElementById('submitButton').addEventListener('click', function (event) {
   event.preventDefault()
-  storeCityName(); //store the name given on click
+  storeCityname(); //store the name given on click
   
   
   fetch('http://api.openweathermap.org/geo/1.0/direct?q='+cityInput.value+'&appid='+key)
   .then(function(response) { return response.json() }) 
   .then(function(data) {
-    console.log(data)
+    // console.log(data)
     
     weather(data)     //call the weather fetch on response   
   })
@@ -46,12 +52,12 @@ function weather(data) {
   let lat = data[0].lat
   let lon = data[0].lon
   
-  fetch('https://api.openweathermap.org/data/2.5/onecall?lat='+lat+'&lon='+lon+'&current.weather.icon&units=metric&appid='+key)
+  fetch('https://api.openweathermap.org/data/2.5/onecall?lat='+lat+'&lon='+lon+'&current.weather.icon&units=metric&exclude=minutely&exclude=hourly&appid='+key)
   .then(function(response) { return response.json() }) 
   .then(function(data) {
-    console.log(data)
+    // console.log(data)
     todayCard(data);    //calling the display weather function after data is retrieved
-    
+    forecast(data)          //calling forecast function
   })
   .catch(function() {
   })
@@ -69,8 +75,8 @@ function formatCityNames (formatName) {
 } //end of formatting name func
 
 
-function storeCityName(formatName) {
-  formatCityNames(formatName);
+function storeCityname(formatName) {
+  
   var cityArr = JSON.parse(localStorage.getItem("city")) || [];
   let tempArr = formatName;
   cityArr.push(tempArr);
@@ -82,15 +88,46 @@ localStorage.setItem('city', JSON.stringify(cityArr));
 
 //display the name of city in a today card, a history list, and a five day card
 
-function todayCard (data) {
-let iconUrl =  `http://openweathermap.org/img/wn/${icon}.png`;
-console.log(icon)
-console.log(data)
-cityEl.textContent = newName;
-tempEl.textContent = temp;
-windEl.textContent = wind;
-humidEl.textContent = humid;
-uvEl.textContent = uv;
-iconEl.setAttribute('src', iconUrl);
-document.getElementById('location').append(iconEl)
+function todayCard (data, formatName) {
+  let icon = (data.current.weather[0].icon);
+  let iconEl = document.createElement('img');
+  let iconUrl =  `http://openweathermap.org/img/wn/${icon}.png`;
+  
+  dateEl.textContent = new Date();
+  cityEl.textContent = formatName;
+  tempEl.textContent = data.current.temp;
+  windEl.textContent = data.current.wind_speed;
+  humidEl.textContent = data.current.humidity;
+  uvEl.textContent = data.current.uvi;
+  iconEl.setAttribute('src', iconUrl);
+  document.getElementById('location').append(iconEl)
+}
+
+
+//converting time to be used for forecast, and making the 5 day forecast
+
+function forecast(data) {
+  
+  //unicorn time
+    // console.log(Date.now());
+  //regular time
+    // console.log(new Date());
+  //convert unix to regular
+    const uni = Date.now();
+      // const milli = uni * 1000;
+        // console.log(milli);
+            const dateObj = new Date(uni * 1000);
+              console.log(new Date())
+  //convert converted time to 24 hour units
+
+  //set the correct timezone
+  let timeZoneName = data.timezone;
+  console.log(timeZoneName);
+    const dateFormat = dateObj.toLocaleString("en-US", {timeZoneName: "short"})
+      console.log(dateFormat);
+
+
+
+
+
 }
