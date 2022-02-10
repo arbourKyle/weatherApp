@@ -11,15 +11,18 @@ body {
 header {
     height: 3rem;
     text-align: center;
-    background-color: rgb(71, 71, 250);
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
     color: whitesmoke;
-    padding-top: 1rem;
+    padding: 1rem 0 0 1rem;
+    margin-bottom: 1rem;
 }
 
 .container {
     display: grid;
     grid-template-columns: 15rem repeat(5, 12rem);
-    grid-template-rows: 25rem 15rem
+    grid-template-rows: 25rem 15rem;
+    width: 98vw;
 }
 
 #user-form,
@@ -41,12 +44,13 @@ header {
     margin: 0.5rem 0 0.5rem 0;
 }
 
-#cityContainer {
-    border: 0.5px solid black;
+#cityContainer > * {
+    /* border: 0.5px solid black; */
     border-radius: 2px;
-    background-color: rgb(212, 225, 238);
+    background-color: rgb(161, 171, 182);
     width: 11.5rem;
     margin: 0.5rem 0 0.5rem 0;
+    cursor: pointer;
 
 }
 
@@ -56,9 +60,20 @@ header {
     height: 20rem;
     margin: 1rem 0 0 0;
     border: 1px solid black;
+    padding-left: 1.5rem;
 }
 
 
+#titleCard {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    
+}
+
+#titleCard > * {
+    padding: 0.5rem 0.5rem 0.5rem 0.2rem;
+}
 
 #c1 {
     grid-row: 2;
@@ -88,29 +103,22 @@ header {
 
 .card {
     position: relative;
-    height: 90%;
+    height: 95%;
     width: 90%;
-    background-color: rgb(13, 136, 236);
-    padding: 0;
+    background-color: #2178bb;
+    color: azure;
+    padding: 0.5rem 0 0 0.5rem;
     margin: 0;
 }
 
 .card > * {
+    
     text-align: justify;
     vertical-align: bottom;
-    line-height: 3rem;
+    line-height: 2.5rem;
 }
 
-#titleCard {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    
-}
 
-#titleCard > * {
-    padding: 0.5rem;
-}
 
 #uv {
     background-color: green;
@@ -120,7 +128,16 @@ header {
     width: 2.5rem;
 }
 
-/* @media screen and (min-width: 992px) */
+/* @media screen and (min-width: 992px) {
+    .container {
+        display: grid;
+        grid-template-columns: 15rem repeat(3, 1fr);
+        grid-template-rows: 25rem repeat(1fr);
+        width: 98vw;
+    }
+} */
+
+
 /* @media screen and (max-width: 600px) {
     
     .container {
