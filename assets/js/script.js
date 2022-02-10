@@ -47,13 +47,14 @@ let day5 = moment().add(5, 'days').format('M/DD/YYYY');
 
 
 //click the submit button and fetch the lat and long
-document.getElementById('submitButton').addEventListener('click', function init(event) {
+document.getElementById('submitButton').addEventListener('click', function(event) {
   event.preventDefault()
   formatCityNames(); //format the name given to capitalize the first letter
+  fetchLatLon();
+});
   
-  // storeCityName(); //store the name given on click
   
-  
+function fetchLatLon(){
   fetch('http://api.openweathermap.org/geo/1.0/direct?q='+cityInput.value+'&appid='+key)
   .then(function(response) { return response.json() }) 
   .then(function(data) {
@@ -63,7 +64,7 @@ document.getElementById('submitButton').addEventListener('click', function init(
   })
   .catch(function() {
   })
-}); // end of click and fetch coordinates
+} // end of click and fetch coordinates
 
 // weather fetch
 function weather(data) {  
@@ -138,7 +139,7 @@ function cityHistory(cityArr, formatName, event) {
   listItem.addEventListener('click', function(event){
 
         if(event.target == ($this)) {
-          
+
         }
 
   })
