@@ -40,10 +40,10 @@ dateObj = today.toLocaleDateString("en-US");
 // console.log(dateEl)
 
 let nextDay = moment().add(24, 'hours').format('M, DD, YYYY ');
-let day2 = moment().add(2, 'days');
-let day3 = moment().add(3, 'days');
-let day4 = moment().add(4, 'days');
-let day5 = moment().add(5, 'days');
+let day2 = moment().add(2, 'days').format('M, DD, YYYY ');
+let day3 = moment().add(3, 'days').format('M, DD, YYYY ');
+let day4 = moment().add(4, 'days').format('M, DD, YYYY ');
+let day5 = moment().add(5, 'days').format('M, DD, YYYY ');
 
 
 //click the submit button and fetch the lat and long
@@ -141,48 +141,50 @@ function cityHistory(formatName) {
 //the 5 day forecast
 
 function forecast(data, formatName) {
-  console.log(data.daily)
   // console.log(formatName)
   let nameObj = document.querySelector('.location');
   formatName = nameObj;
   
+  
+  //day 1
+  let timeEl1 = document.querySelector('#time1');
+  let tempEl1 = document.querySelector('#temp1');
+  let windEl1 = document.querySelector('#wind1');
+  let humidEl1 = document.querySelector('#humid1');
 
-//day 1
-/* let iconEl1 = document.querySelector('#icon1').data.daily[1].weather.icon;
-let iconUrl1 =  `http://openweathermap.org/img/wn/${iconEl1}.png`;
-iconEl1.setAttribute('src', iconUrl1); */
-let timeEl1 = document.querySelector('#time1');
-let tempEl1 = document.querySelector('#temp1');
-let windEl1 = document.querySelector('#wind1');
-let humidEl1 = document.querySelector('#humid1');
-
-
-
+  
+  
   timeEl1.textContent = nextDay;
   tempEl1.textContent = data.daily[1].temp.day;
   windEl1.textContent = data.daily[1].wind_speed;
   humidEl1.textContent = data.daily[1].humidity;
-
-
-
-//day2
-
-let timeEl2 = document.querySelector('#time2');
-let iconEl2 = document.querySelector('#icon2');
-let tempEl2 = document.querySelector('#temp2');
-let windEl2 = document.querySelector('#wind2');
-let humidEl2 = document.querySelector('#humid2');
-
+  
+  
+  var iconEl1 = document.querySelector('#icon1');
+  var iconUrl1 = `http://openweathermap.org/img/wn/${data.daily[1].weather[0].icon}.png`;
+  iconEl1.setAttribute('src', iconUrl1);
+  
+  //day2
+  
+  let timeEl2 = document.querySelector('#time2');
+  let tempEl2 = document.querySelector('#temp2');
+  let windEl2 = document.querySelector('#wind2');
+  let humidEl2 = document.querySelector('#humid2');
+  
   timeEl2.textContent = day2;
   iconEl2.textContent = data.daily[2].weather.icon;
   tempEl2.textContent = data.daily[2].temp.day;
   windEl2.textContent = data.daily[2].wind_speed;
   humidEl2.textContent = data.daily[2].humidity;
+  
+  const iconEl2 = document.querySelector('#icon2');
+  const iconUrl2 = `http://openweathermap.org/img/wn/${data.daily[2].weather[0].icon}.png`;
+  iconEl2.setAttribute('src', iconUrl2);
+  console.log(data.daily[2].weather[0].icon)
 
 //day3
 
 let timeEl3 = document.querySelector('#time3');
-let iconEl3 = document.querySelector('#icon3');
 let tempEl3 = document.querySelector('#temp3');
 let windEl3 = document.querySelector('#wind3');
 let humidEl3 = document.querySelector('#humid3');
@@ -193,10 +195,13 @@ let humidEl3 = document.querySelector('#humid3');
   windEl3.textContent = data.daily[3].wind_speed;
   humidEl3.textContent = data.daily[3].humidity;
 
+  let iconEl3 = document.querySelector('#icon3');
+  let iconUrl3 = `http://openweathermap.org/img/wn/${data.daily[3].weather[0].icon}.png`;
+  iconEl3.setAttribute('src', iconUrl3);
+
 //day4
 
 let timeEl4 = document.querySelector('#time4');
-let iconEl4 = document.querySelector('#icon4');
 let tempEl4 = document.querySelector('#temp4');
 let windEl4 = document.querySelector('#wind4');
 let humidEl4 = document.querySelector('#humid4');
@@ -207,10 +212,13 @@ let humidEl4 = document.querySelector('#humid4');
   windEl4.textContent = data.daily[4].wind_speed;
   humidEl4.textContent = data.daily[4].humidity;
 
+  let iconEl4 = document.querySelector('#icon4');
+  let iconUrl4 = `http://openweathermap.org/img/wn/${data.daily[4].weather[0].icon}.png`;
+  iconEl4.setAttribute('src', iconUrl4);
+
 //day5
 
 let timeEl5 = document.querySelector('#time5');
-let iconEl5 = document.querySelector('#icon5');
 let tempEl5 = document.querySelector('#temp5');
 let windEl5 = document.querySelector('#wind5');
 let humidEl5 = document.querySelector('#humid5');
@@ -221,6 +229,9 @@ let humidEl5 = document.querySelector('#humid5');
   windEl5.textContent = data.daily[5].wind_speed;
   humidEl5.textContent = data.daily[5].humidity;
 
+  let iconEl5 = document.querySelector('#icon5');
+  let iconUrl5 = `http://openweathermap.org/img/wn/${data.daily[5].weather[0].icon}.png`;
+  iconEl5.setAttribute('src', iconUrl5);
 
 
 } 
