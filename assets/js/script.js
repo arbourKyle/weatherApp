@@ -39,11 +39,18 @@ var today  = new Date();
 dateObj = today.toLocaleDateString("en-US");
 // console.log(dateEl)
 
+let nextDay = moment().add(24, 'hours').format('M, DD, YYYY ');
+let day2 = moment().add(2, 'days');
+let day3 = moment().add(3, 'days');
+let day4 = moment().add(4, 'days');
+let day5 = moment().add(5, 'days');
+
 
 //click the submit button and fetch the lat and long
 document.getElementById('submitButton').addEventListener('click', function (event) {
   event.preventDefault()
   formatCityNames(); //format the name given to capitalize the first letter
+  
   // storeCityName(); //store the name given on click
   
   
@@ -96,7 +103,7 @@ function storeCityName(name) {
 //the city name is set here
   localStorage.setItem('city', JSON.stringify(cityArr));
 
-  
+  cityHistory(formatName);      //calling the list append function
 
 } //end of storing city name func
 
@@ -122,13 +129,13 @@ function todayCard (data, formatName) {
 
 //the history list below the search bar
 
-/* function cityHistory(name) {
-  console.log(name)
-  let listItem = document.createElement('div');
-  listItem.setAttribute('name', name);
+function cityHistory(formatName) {
+  console.log(formatName)
+  let listItem = document.createElement('div').textContent = formatName;
+  
   cityHistoryList.append(listItem);
 
-} */
+}
 
 
 //the 5 day forecast
@@ -136,12 +143,84 @@ function todayCard (data, formatName) {
 function forecast(data, formatName) {
   console.log(data.daily)
   // console.log(formatName)
+  let nameObj = document.querySelector('.location');
+  formatName = nameObj;
+  
 
-  /* c1.textContent = data.daily[1];
-  c2.textContent = data.daily[2];
-  c3.textContent = data.daily[3];
-  c4.textContent = data.daily[4];
-  c5.textContent = data.daily[5]; */
+//day 1
+/* let iconEl1 = document.querySelector('#icon1').data.daily[1].weather.icon;
+let iconUrl1 =  `http://openweathermap.org/img/wn/${iconEl1}.png`;
+iconEl1.setAttribute('src', iconUrl1); */
+let timeEl1 = document.querySelector('#time1');
+let tempEl1 = document.querySelector('#temp1');
+let windEl1 = document.querySelector('#wind1');
+let humidEl1 = document.querySelector('#humid1');
+
+
+
+  timeEl1.textContent = nextDay;
+  tempEl1.textContent = data.daily[1].temp.day;
+  windEl1.textContent = data.daily[1].wind_speed;
+  humidEl1.textContent = data.daily[1].humidity;
+
+
+
+//day2
+
+let timeEl2 = document.querySelector('#time2');
+let iconEl2 = document.querySelector('#icon2');
+let tempEl2 = document.querySelector('#temp2');
+let windEl2 = document.querySelector('#wind2');
+let humidEl2 = document.querySelector('#humid2');
+
+  timeEl2.textContent = day2;
+  iconEl2.textContent = data.daily[2].weather.icon;
+  tempEl2.textContent = data.daily[2].temp.day;
+  windEl2.textContent = data.daily[2].wind_speed;
+  humidEl2.textContent = data.daily[2].humidity;
+
+//day3
+
+let timeEl3 = document.querySelector('#time3');
+let iconEl3 = document.querySelector('#icon3');
+let tempEl3 = document.querySelector('#temp3');
+let windEl3 = document.querySelector('#wind3');
+let humidEl3 = document.querySelector('#humid3');
+
+  timeEl3.textContent = day3;
+  iconEl3.textContent = data.daily[3].weather.icon;
+  tempEl3.textContent = data.daily[3].temp.day;
+  windEl3.textContent = data.daily[3].wind_speed;
+  humidEl3.textContent = data.daily[3].humidity;
+
+//day4
+
+let timeEl4 = document.querySelector('#time4');
+let iconEl4 = document.querySelector('#icon4');
+let tempEl4 = document.querySelector('#temp4');
+let windEl4 = document.querySelector('#wind4');
+let humidEl4 = document.querySelector('#humid4');
+
+  timeEl4.textContent = day4;
+  iconEl4.textContent = data.daily[4].weather.icon;
+  tempEl4.textContent = data.daily[4].temp.day;
+  windEl4.textContent = data.daily[4].wind_speed;
+  humidEl4.textContent = data.daily[4].humidity;
+
+//day5
+
+let timeEl5 = document.querySelector('#time5');
+let iconEl5 = document.querySelector('#icon5');
+let tempEl5 = document.querySelector('#temp5');
+let windEl5 = document.querySelector('#wind5');
+let humidEl5 = document.querySelector('#humid5');
+
+  timeEl5.textContent = day5;
+  iconEl5.textContent = data.daily[5].weather.icon;
+  tempEl5.textContent = data.daily[5].temp.day;
+  windEl5.textContent = data.daily[5].wind_speed;
+  humidEl5.textContent = data.daily[5].humidity;
+
 
 
 } 
