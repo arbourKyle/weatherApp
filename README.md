@@ -6,7 +6,7 @@ This browser application retrieves weather data from any city you choose, using 
 
 ## Usage
 
-![]./assets/img/weatherDashboard.jpg
+![](./assets/img/weatherDashboard.jpg)
 
 ## Credits
 
@@ -14,6 +14,6 @@ https://openweathermap.org/api
 
 ## License
 
-![]./LICENCE.txt
+![](./LICENCE.txt)
 
 ---
