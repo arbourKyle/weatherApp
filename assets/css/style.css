@@ -16,13 +16,14 @@ header {
     color: whitesmoke;
     padding: 1rem 0 0 1rem;
     margin-bottom: 1rem;
+    width: 98vw;
 }
 
 .container {
     display: grid;
     grid-template-columns: 15rem repeat(5, 12rem);
     grid-template-rows: 25rem 15rem;
-    width: 98vw;
+    
 }
 
 #user-form,
@@ -60,11 +61,14 @@ header {
     height: 20rem;
     margin: 1rem 0 0 0;
     border: 1px solid black;
-    padding-left: 1.5rem;
+    /* padding-left: 1.5rem; */
 }
 
 
 #titleCard {
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,107,121,0.9671218829328606) 28%, rgba(0,212,255,1) 100%);
+    color: aliceblue;
     display: flex;
     justify-content: flex-start;
     align-items: center;

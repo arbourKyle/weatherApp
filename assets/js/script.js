@@ -33,7 +33,7 @@ var icon;
 var icon2;
 var data;
 var formatName;
-
+var city;
 
 var today  = new Date();
 dateObj = today.toLocaleDateString("en-US");
@@ -46,15 +46,17 @@ let day4 = moment().add(4, 'days').format('M/DD/YYYY');
 let day5 = moment().add(5, 'days').format('M/DD/YYYY');
 
 
-//click the submit button and fetch the lat and long
-document.getElementById('submitButton').addEventListener('click', function init(event) {
+//click the submit button and call 2 funcs--LatLon and Format city name
+document.getElementById('submitButton').addEventListener('click', function(event) {
   event.preventDefault()
-  formatCityNames(); //format the name given to capitalize the first letter
+  let city = cityInput.value
+  formatCityNames(city); //format the name given to capitalize the first letter
+  fetchLatLon(city);
+});
   
-  // storeCityName(); //store the name given on click
-  
-  
-  fetch('http://api.openweathermap.org/geo/1.0/direct?q='+cityInput.value+'&appid='+key)
+//Fetch lat and lon 
+function fetchLatLon(city){
+  fetch('http://api.openweathermap.org/geo/1.0/direct?q='+city+'&appid='+key)
   .then(function(response) { return response.json() }) 
   .then(function(data) {
     // console.log(data)
@@ -63,7 +65,7 @@ document.getElementById('submitButton').addEventListener('click', function init(
   })
   .catch(function() {
   })
-}); // end of click and fetch coordinates
+} // end of fetch coordinates
 
 // weather fetch
 function weather(data) {  
@@ -74,7 +76,7 @@ function weather(data) {
   .then(function(response) { return response.json() }) 
   .then(function(data) {
     console.log(data)
-    todayCard(data, formatName)  //calling the display weather function after data is retrieved
+    todayCard(data, city, formatName)  //calling the display weather function after data is retrieved
     forecast(data)              //calling forecast function
   })
   .catch(function() {
@@ -94,10 +96,10 @@ function formatCityNames () {
 } //end of formatting name func
 
 
-function storeCityName(name) {
+function storeCityName(formatName) {
   
   var cityArr = JSON.parse(localStorage.getItem("city")) || [];
-  let tempArr = name;
+  let tempArr = formatName;
   cityArr.push(tempArr);
   
 //the city name is set here
@@ -109,7 +111,7 @@ function storeCityName(name) {
 
 
 //display the name of city in a today card
-function todayCard (data, formatName) {
+function todayCard (data, city, formatName) {
   
   // console.log(iconUrl)
   // console.log(formatName)
@@ -137,10 +139,11 @@ function cityHistory(cityArr, formatName, event) {
 
   listItem.addEventListener('click', function(event){
 
-        if(event.target == ($this)) {
-          
+        if(event.target == this) {
+          fetchLatLon(event.target.id);
+          todayCard(event.target.id);
         }
-
+        console.log(event.target.id);
   })
   
 } //end of history list func
