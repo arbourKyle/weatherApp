@@ -112,7 +112,7 @@ function storeCityName(formatName) {
 
 //display the name of city in a today card
 function todayCard (data, city, formatName) {
-  
+  formatName = cityInput.value;
   // console.log(iconUrl)
   // console.log(formatName)
   cityEl.innerText = formatName;
@@ -136,12 +136,13 @@ function cityHistory(cityArr, formatName, event) {
   listItem.textContent = formatName;
   listItem.id = formatName;
   cityHistoryList.appendChild(listItem);
+  
 
   listItem.addEventListener('click', function(event){
 
         if(event.target == this) {
+          cityInput.value = event.target.id;
           fetchLatLon(event.target.id);
-          todayCard(event.target.id);
         }
         console.log(event.target.id);
   })
