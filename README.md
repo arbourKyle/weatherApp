@@ -6,7 +6,7 @@ This browser application retrieves weather data from any city you choose, using 
 
 ## Usage
 
-![]./assets/img/weatherApp.jpg
+![]./assets/img/weatherDashboard.jpg
 
 ## Credits
 
