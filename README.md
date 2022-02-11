@@ -1,1 +1,19 @@
-# weatherApp![weatherDashboard](https://user-images.githubusercontent.com/96347402/153540980-68f8d990-e5c8-47d5-a198-0da450c417f3.jpg)
+# weatherApp
+
+## Description
+
+This browser application retrieves weather data from any city you choose, using the openweather API.
+
+## Usage
+
+![]./assets/img/weatherApp.jpg
+
+## Credits
+
+https://openweathermap.org/api
+
+## License
+
+![]./LICENCE.txt
+
+---
