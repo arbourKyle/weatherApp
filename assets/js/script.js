@@ -56,7 +56,7 @@ document.getElementById('submitButton').addEventListener('click', function(event
   
 //Fetch lat and lon 
 function fetchLatLon(city){
-  fetch('http://api.openweathermap.org/geo/1.0/direct?q='+city+'&appid='+key)
+  fetch('https://api.openweathermap.org/geo/1.0/direct?q='+city+'&appid='+key)
   .then(function(response) { return response.json() }) 
   .then(function(data) {
     // console.log(data)
