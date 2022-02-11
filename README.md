@@ -14,6 +14,6 @@ https://openweathermap.org/api
 
 ## License
 
-![](./LICENCE.txt)
+!LICENCE.txt
 
 ---
